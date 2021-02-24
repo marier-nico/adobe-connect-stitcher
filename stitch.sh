@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # This doesn't quite work, but it is tested with the class ID : ppyfytvrxa4t
+# It seems like the audio is behind the video by about 10 seconds. This can be tested at about 1:03:00
 
 #for screenshare in screenshare_*.flv; do
 #    ffmpeg -i "$screenshare" -s 1920x1080 "$screenshare".mkv
