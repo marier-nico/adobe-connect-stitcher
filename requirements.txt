@@ -1,3 +1,5 @@
-typer
+typer~=0.3.2
 colorama
 shellingham
+black
+ffmpeg-python

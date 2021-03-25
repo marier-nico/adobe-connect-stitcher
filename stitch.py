@@ -1,17 +1,29 @@
 from pathlib import Path
-from typing import Optional
 
 import typer
 
+from extract_content_info import get_all_content
+from stitch_content import stitch
 
-def main(connect_zip: Optional[Path] = typer.Argument(default=None, exists=True, file_okay=True, dir_okay=False, writable=False,
-                                                    readable=True,
-                                                    resolve_path=True)):
-    if not connect_zip:
-        typer.secho("Please provide a zip file obtained from Adobe Connect", fg=typer.colors.RED)
-    else:
-        typer.secho(f"You provided the file: {connect_zip}", fg=typer.colors.GREEN)
+CONNECT_DIR_OPTION = typer.Argument(
+    default=None,
+    exists=True,
+    file_okay=False,
+    dir_okay=True,
+    writable=False,
+    readable=True,
+    resolve_path=True,
+)
+
+
+def main(connect_dir: Path = CONNECT_DIR_OPTION):
+    content = get_all_content(connect_dir)
+    result = stitch(content, connect_dir)
+    typer.secho(f"Access the stitched output at {result}")
 
 
 if __name__ == "__main__":
-    typer.run(main)
+    try:
+        typer.run(main)
+    except Exception as e:
+        typer.secho(str(e), fg=typer.colors.RED)
