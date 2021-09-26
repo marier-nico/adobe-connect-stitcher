@@ -26,4 +26,4 @@ if __name__ == "__main__":
     try:
         typer.run(main)
     except Exception as e:
-        typer.secho(str(e), fg=typer.colors.RED)
+        typer.secho(f"Uncaught exception: {str(e)}", fg=typer.colors.RED)

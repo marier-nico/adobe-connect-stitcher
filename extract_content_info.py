@@ -3,6 +3,13 @@ from pathlib import Path
 from typing import List
 from xml.etree import ElementTree as ET
 
+try:
+    import dateparser
+    _has_dateparser = True
+except ImportError:
+    dateparser = None
+    _has_dateparser = False
+
 import ffmpeg
 
 from audio_video_content import AudioVideoContent
@@ -31,11 +38,13 @@ def get_content_start_date_from_xml(xml_path: Path) -> datetime:
 
 
 def parse_date(date: str) -> datetime:
-    try:
-        # Not sure if the month is zero-padded
-        return datetime.strptime(date, "%a %b %d %H:%M:%S %Y")
-    except ValueError:
-        pass
+    if ":" in date and len(date) >= 5:
+        if _has_dateparser:
+            parsed = dateparser.parse(date)
+            if parsed:
+                return parsed
+        else:
+            return datetime.strptime(date, "%a %b %d %H:%M:%S %Y")
 
     raise ValueError("The provided string does not look like a date")
 

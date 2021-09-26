@@ -4,6 +4,7 @@
 
 - Make `ffmpeg` available in your system path.
 - Install `ffmpeg-python` through pip.
+- Optionally install `dateparser` through pip if the dates in your Adobe Connect xml files are not in English.
 
 **Usage**
 
