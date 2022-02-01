@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "adobe-connect-stitcher"
+version = "0.1.0"
+description = "Stitch back Adobe Connect meetings from the zip file"
+authors = ["Nicolas Marier <software@nmarier.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+typer = "^0.4.0"
+colorama = "^0.4.4"
+dateparser = "^1.1.0"
+shellingham = "^1.4.0"
+ffmpeg-python = "^0.2.0"
+
+[tool.poetry.dev-dependencies]
+black = "^22.1.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
