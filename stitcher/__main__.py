@@ -6,7 +6,7 @@ from stitcher.extract_content_info import get_all_content
 from stitcher.stitch_content import stitch
 
 CONNECT_DIR_OPTION = typer.Argument(
-    default=None,
+    default=...,
     exists=True,
     file_okay=False,
     dir_okay=True,
@@ -22,7 +22,4 @@ def main(connect_dir: Path = CONNECT_DIR_OPTION):
     typer.secho(f"Access the stitched output at {result}")
 
 
-try:
-    typer.run(main)
-except Exception as e:
-    typer.secho(f"Uncaught exception: {str(e)}", fg=typer.colors.RED)
+typer.run(main)
