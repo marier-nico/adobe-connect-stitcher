@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 import typer
@@ -22,4 +23,7 @@ def main(connect_dir: Path = CONNECT_DIR_OPTION):
     typer.secho(f"Access the stitched output at {result}")
 
 
-typer.run(main)
+try:
+    typer.run(main)
+except Exception as e:
+    typer.secho(f"Uncaught exception: {str(e)}", fg=typer.colors.RED)

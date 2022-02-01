@@ -27,14 +27,16 @@ def get_content_with_xml_info(content_path: Path, content_type: ContentType) -> 
 
 def get_content_start_date_from_xml(xml_path: Path) -> datetime:
     xml_info = ET.parse(xml_path)
-    time_info_array = [e for e in xml_info.getroot().findall("Message") if e.find("Array")][0].find("Array")
+    arrays_in_messages = [e.find("Array") for e in xml_info.getroot().findall("Message") if e.find("Array")]
 
-    for elm in time_info_array:
-        try:
-            return parse_date(elm.text)
-        except ValueError:
-            pass
-    raise Exception(f"Could not determine content start for file '{xml_path}'")
+    for array in arrays_in_messages:
+        for elm in array:
+            try:
+                return parse_date(elm.text)
+            except ValueError:
+                pass
+
+    raise RuntimeError(f"Could not determine content start for file '{xml_path}'")
 
 
 def parse_date(date: str) -> datetime:
