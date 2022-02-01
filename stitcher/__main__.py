@@ -22,8 +22,7 @@ def main(connect_dir: Path = CONNECT_DIR_OPTION):
     typer.secho(f"Access the stitched output at {result}")
 
 
-if __name__ == "__main__":
-    try:
-        typer.run(main)
-    except Exception as e:
-        typer.secho(f"Uncaught exception: {str(e)}", fg=typer.colors.RED)
+try:
+    typer.run(main)
+except Exception as e:
+    typer.secho(f"Uncaught exception: {str(e)}", fg=typer.colors.RED)
