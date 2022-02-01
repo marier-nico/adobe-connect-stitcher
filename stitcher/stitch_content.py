@@ -4,8 +4,8 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import List
 
-from audio_video_content import AudioVideoContent
-from content_type import ContentType
+from stitcher.audio_video_content import AudioVideoContent
+from stitcher.content_type import ContentType
 
 
 def find_start_of_all_content(content: List[AudioVideoContent]) -> datetime:

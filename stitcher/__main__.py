@@ -2,8 +2,8 @@ from pathlib import Path
 
 import typer
 
-from extract_content_info import get_all_content
-from stitch_content import stitch
+from stitcher.extract_content_info import get_all_content
+from stitcher.stitch_content import stitch
 
 CONNECT_DIR_OPTION = typer.Argument(
     default=None,

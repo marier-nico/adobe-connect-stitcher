@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Optional
 
-from content_type import ContentType
+from stitcher.content_type import ContentType
 
 
 @dataclass

@@ -12,8 +12,8 @@ except ImportError:
 
 import ffmpeg
 
-from audio_video_content import AudioVideoContent
-from content_type import ContentType
+from stitcher.audio_video_content import AudioVideoContent
+from stitcher.content_type import ContentType
 
 
 def get_content_with_xml_info(content_path: Path, content_type: ContentType) -> AudioVideoContent:
